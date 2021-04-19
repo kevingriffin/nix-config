@@ -11,20 +11,20 @@
     gitAndTools.hub
     gitFull
     id3v2
-    pythonPackages.eyeD3
+    python3Packages.eyeD3
   ];
 
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
-    virtualHosts."reina.local.kevin.jp" = {
+    virtualHosts."reina.kevin.jp" = {
       forceSSL = true;
       locations."/" = {
         proxyPass = "http://localhost:3000";
         proxyWebsockets = true;
       };
-      sslCertificate = "/etc/nginx/lego/certificates/reina.local.kevin.jp.crt";
-      sslCertificateKey = "/etc/nginx/lego/certificates/reina.local.kevin.jp.key";
+      sslCertificate = "/etc/nginx/lego/certificates/reina.kevin.jp.crt";
+      sslCertificateKey = "/etc/nginx/lego/certificates/reina.kevin.jp.key";
     };
   };
 

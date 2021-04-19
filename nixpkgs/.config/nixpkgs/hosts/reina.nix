@@ -1,17 +1,15 @@
-{ config, pkgs, unstablePkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
-    (import ../modules/base-packages.nix { inherit config pkgs unstablePkgs; })
-    (import ../modules/ruby-development.nix { inherit config pkgs unstablePkgs; })
+    ../modules/base-packages.nix
+    ../modules/ruby-development.nix
   ];
 
 
   environment.systemPackages = with pkgs; [
-    gitAndTools.diff-so-fancy
-    unstablePkgs.gitAndTools.hub
+    gitAndTools.hub
     gitFull
-    git-lfs
     id3v2
     pythonPackages.eyeD3
   ];
@@ -29,6 +27,10 @@
       sslCertificateKey = "/etc/nginx/lego/certificates/reina.local.kevin.jp.key";
     };
   };
+
+  # Used for backwards compatibility, please read the changelog before changing.
+  # $ darwin-rebuild changelog
+  system.stateVersion = 3;
 
   nix.maxJobs = 4;
   nix.buildCores = 3;

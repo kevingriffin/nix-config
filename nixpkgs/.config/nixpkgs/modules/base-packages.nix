@@ -1,26 +1,22 @@
-{ config, pkgs, unstablePkgs, ... }:
+{ config, pkgs, ... }:
 let
   nmapPkg = pkgs.nmap-unfree or pkgs.nmap;
 in
 {
    environment.systemPackages = with pkgs; [
-     unstablePkgs._1password
      ag
      age
-     aria2
      bat
      bind
-     unstablePkgs.bottom
-     unstablePkgs.bundix
+     bundix
      colordiff
      gitAndTools.delta
      fd
-     fish
-     unstablePkgs.fzf
+     fzf
      gnumake
-     unstablePkgs.gnupg
+     gnupg
      htop
-     unstablePkgs.httpie
+     httpie
      iterm2-integration
      osc52-pbcopy
      jq
@@ -29,7 +25,8 @@ in
      neovim
      nginx
      nmapPkg
-     unstablePkgs.onefetch
+     onefetch
+     nmap-unfree
      overmind
      pfetch
      pigz
@@ -46,9 +43,8 @@ in
      tree
      unzip
      xsv
-     unstablePkgs.youtube-dl
+     youtube-dl
      yank
-     unstablePkgs.yubikey-manager
      zstd
    ];
 }

@@ -1,15 +1,8 @@
 { config, pkgs, options, ... }:
-
-let
-  unstablePkgs = import<nixpkgs-unstable> {
-    config.allowUnfree = true;
-    overlays = [ (import ./overlays/packages.nix) ];
-  };
-in
 {
 
   imports = [
-    (import ./local.nix { inherit config pkgs unstablePkgs; })
+    ./local.nix
     ./darwin-modules
   ];
 
@@ -26,7 +19,7 @@ in
     interactiveShellInit = ''
         source (fzf-share)/key-bindings.fish
     '';
-    useBabelfish = true;
+    useBabelfish     = true;
     babelfishPackage = pkgs.babelfish;
   };
 
@@ -55,10 +48,6 @@ in
   environment.variables.EDITOR = "nvim";
   # Make gpg always request password at terminal
   environment.variables.PINENTRY_USER_DATA = "USE_CURSES=1";
-
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 3;
 
   services.openssh = {
     passwordAuthentication          = false;

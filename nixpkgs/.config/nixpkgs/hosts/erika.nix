@@ -45,6 +45,10 @@
     source-code-pro
   ];
 
+  programs.fish = {
+    useBabelfish = true;
+  };
+
   time.timeZone = "Asia/Tokyo";
 
   security.acme.email       = "me@kevin.jp";

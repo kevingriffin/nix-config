@@ -1,4 +1,7 @@
 { config, pkgs, unstablePkgs, ... }:
+let
+  nmapPkg = pkgs.nmap-unfree or pkgs.nmap;
+in
 {
    environment.systemPackages = with pkgs; [
      unstablePkgs._1password
@@ -13,7 +16,7 @@
      gitAndTools.delta
      fd
      fish
-     fzf
+     unstablePkgs.fzf
      gnumake
      unstablePkgs.gnupg
      htop
@@ -25,7 +28,7 @@
      lsof
      neovim
      nginx
-     nmap-unfree
+     nmapPkg
      unstablePkgs.onefetch
      overmind
      pfetch

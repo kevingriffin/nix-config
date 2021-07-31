@@ -61,9 +61,20 @@ in
     users.hass = {
       acl = [
         "topic readwrite homeassistant/#"
+        "topic readwrite zigbee2mqtt/#"
         "topic read homie/#"
         "topic read sht/#"
         "topic readwrite tasmota/#"
+      ];
+      hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
+    };
+
+    users.zigbee = {
+      acl = [
+        "topic readwrite homeassistant/#"
+        "topic readwrite zigbee2mqtt/#"
+        "topic read homie/#"
+        "topic read sht/#"
       ];
       hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
     };
@@ -183,6 +194,10 @@ in
             "light.family_room"
             "lock.front_top"
             "media_player.sony_bravia_tv"
+            "input_boolean.switch_1_button_4"
+            "input_boolean.switch_1_button_3"
+            "input_boolean.switch_1_button_2"
+            "input_boolean.switch_1_button_1"
           ];
         };
       };
@@ -194,8 +209,106 @@ in
         }
       ];
 
-      group      = {};
-      automation = {};
+      group = {};
+
+      automation = [
+        {
+          id = "switch_1_button_4";
+          alias = "switch_1_button_4";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0xbc33acfffe28bd75";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == '4_single' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_1_button_4";
+            };
+          };
+        }
+        {
+          id = "switch_1_button_3";
+          alias = "switch_1_button_3";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0xbc33acfffe28bd75";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == '3_single' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_1_button_3";
+            };
+          };
+        }
+        {
+          id = "switch_1_button_2";
+          alias = "switch_1_button_2";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0xbc33acfffe28bd75";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == '2_single' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_1_button_2";
+            };
+          };
+        }
+        {
+          id = "switch_1_button_1";
+          alias = "switch_1_button_1";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0xbc33acfffe28bd75";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == '1_single' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_1_button_1";
+            };
+          };
+        }
+      ];
+
+      input_boolean = {
+        switch_1_button_4 = {
+          name = "Switch 1 Button 4";
+        };
+        switch_1_button_3 = {
+          name = "Switch 1 Button 3";
+        };
+        switch_1_button_2 = {
+          name = "Switch 1 Button 2";
+        };
+        switch_1_button_1 = {
+          name = "Switch 1 Button 1";
+        };
+      };
+
       script     = {};
 
       light = [

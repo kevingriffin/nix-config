@@ -1,9 +1,9 @@
-{ lib, bundlerEnv, ruby }:
+{ lib, bundlerEnv, ruby_3_0 }:
 
 bundlerEnv rec {
   pname = "seeing_is_believing";
 
-  inherit ruby;
+  ruby = ruby_3_0;
 
   gemdir = ./.;
 

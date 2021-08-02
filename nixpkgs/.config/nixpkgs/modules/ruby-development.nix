@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    ruby
+    ruby_3_0
     seeing_is_believing
     rubocop
   ];

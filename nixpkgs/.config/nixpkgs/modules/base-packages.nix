@@ -8,15 +8,20 @@ in
      age
      bat
      bind
+     broot
      bundix
      colordiff
+     git
      gitAndTools.delta
+     gitAndTools.stgit
      fd
+     fx
      fzf
      gnumake
      gnupg
      htop
      httpie
+     http-prompt
      iterm2-integration
      osc52-pbcopy
      jq
@@ -27,12 +32,14 @@ in
      nmapPkg
      onefetch
      nmap-unfree
+     nnn
      overmind
      pfetch
      pigz
      procs
      ripgrep
      rsync
+     sd
      speedtest-cli
      sshpass
      stow

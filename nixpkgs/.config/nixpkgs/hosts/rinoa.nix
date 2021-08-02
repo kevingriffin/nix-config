@@ -17,20 +17,14 @@ in
   nix.extraOptions = "extra-platforms = x86_64-darwin aarch64-darwin";
 
   environment.systemPackages = with pkgs; [
-     # intelNixpkgs._1password
      # intelNixpkgs.yubikey-manager
-     intelNixpkgs.branchctl
+     branchctl
      opensc
   ];
 
-  # Work around sw_vers problem in current
-  # aarch64 support
-  nixpkgs.config.packageOverrides = pkgs: {
-    nix-info = intelNixpkgs.nix-info;
-  };
-
   system.activationScripts.extraActivation.text = with pkgs; ''
     if ! (cmp -s ${opensc}/lib/pkcs11/opensc-pkcs11.so /usr/local/lib/opensc-pkcs11.so) ; then
+      rm /usr/local/lib/opensc-pkcs11.so
       cp ${opensc}/lib/pkcs11/opensc-pkcs11.so /usr/local/lib
     fi
   '';

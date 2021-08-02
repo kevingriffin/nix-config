@@ -8,11 +8,17 @@
 
 
   environment.systemPackages = with pkgs; [
-    gitAndTools.hub
-    gitFull
     id3v2
-    python3Packages.eyeD3
+    pythonPackages.eyeD3
+    opensc
   ];
+
+  system.activationScripts.extraActivation.text = with pkgs; ''
+    if ! (cmp -s ${opensc}/lib/pkcs11/opensc-pkcs11.so /usr/local/lib/opensc-pkcs11.so) ; then
+      rm /usr/local/lib/opensc-pkcs11.so
+      cp ${opensc}/lib/pkcs11/opensc-pkcs11.so /usr/local/lib
+    fi
+  '';
 
   services.nginx = {
     enable = true;
@@ -32,6 +38,6 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 3;
 
-  nix.maxJobs = 4;
-  nix.buildCores = 3;
+  nix.maxJobs = 8;
+  nix.buildCores = 8;
 }

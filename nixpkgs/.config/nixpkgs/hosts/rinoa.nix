@@ -1,12 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  intelNixpkgs = import pkgs.path {
-    localSystem = "x86_64-darwin";
-    config.allowUnfree = true;
-    overlays = [ (import ../overlays/packages.nix) ];
-  };
-in
 {
 
   imports = [
@@ -17,7 +10,6 @@ in
   nix.extraOptions = "extra-platforms = x86_64-darwin aarch64-darwin";
 
   environment.systemPackages = with pkgs; [
-     # intelNixpkgs.yubikey-manager
      branchctl
      opensc
   ];

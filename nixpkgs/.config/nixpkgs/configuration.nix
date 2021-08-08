@@ -5,7 +5,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  unstablePkgs = import<nixpkgs-unstable> {
+  unstablePkgs = import <nixpkgs-unstable> {
     config.allowUnfree = true;
     overlays = [ (import ./overlays/packages.nix) ];
   };
@@ -13,7 +13,6 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    (import ./modules/base-packages.nix { inherit config pkgs unstablePkgs; })
     (import ./local.nix { inherit config pkgs lib unstablePkgs; })
   ];
 

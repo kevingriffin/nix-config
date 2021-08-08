@@ -10,6 +10,7 @@
     ../modules/znc.nix
     ../modules/linx-server.nix
     ../modules/miniflux.nix
+    (import ../modules/base-packages.nix { inherit config pkgs; })
    ];
 
   boot.loader.grub.enable  = true;

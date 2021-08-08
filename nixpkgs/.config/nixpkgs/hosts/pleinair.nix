@@ -3,13 +3,14 @@
 {
   imports =
     [
-      ../nix-mape/nixos-modules
-      ../modules/router.nix
-      ../modules/dns.nix
-      ../modules/borg-backup
-      ../modules/router-wireguard.nix
-      (import ../modules/zigbee2mqtt.nix { inherit config; pkgs = unstablePkgs; })
-      (import ../modules/hass.nix { inherit config pkgs unstablePkgs; })
+     ../nix-mape/nixos-modules
+     ../modules/router.nix
+     ../modules/dns.nix
+     ../modules/borg-backup
+     ../modules/router-wireguard.nix
+     (import ../modules/base-packages.nix { inherit config pkgs; })
+     (import ../modules/zigbee2mqtt.nix { inherit config; pkgs = unstablePkgs; })
+     (import ../modules/hass.nix { inherit config pkgs unstablePkgs; })
     ];
 
   boot.loader.systemd-boot.enable      = true;

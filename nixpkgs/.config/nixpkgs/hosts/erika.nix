@@ -6,6 +6,7 @@
     ../modules/vpn.nix
     (import ../modules/ruby-development.nix { inherit config pkgs unstablePkgs; })
     (import ../modules/weechat.nix          { inherit config; pkgs = unstablePkgs; })
+    (import ../modules/base-packages.nix { inherit config; pkgs = unstablePkgs; })
   ];
 
   boot.loader.systemd-boot.enable      = true;

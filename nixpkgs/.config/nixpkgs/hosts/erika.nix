@@ -94,7 +94,7 @@
   system.activationScripts.userActivationScripts =
           ''
             mkdir -p /usr/lib
-            if ! (cmp -s ${pkgs.opensc}/lib/opensc-pkcs11.so /usr/lib/opensc-pkcs11.so) ; then
+            if ! (${pkgs.busybox}/bin/cmp -s ${pkgs.opensc}/lib/opensc-pkcs11.so /usr/lib/opensc-pkcs11.so) ; then
               cp ${pkgs.opensc}/lib/opensc-pkcs11.so /usr/lib
             fi
           '';

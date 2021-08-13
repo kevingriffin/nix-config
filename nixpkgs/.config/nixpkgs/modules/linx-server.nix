@@ -54,6 +54,7 @@ with lib; {
     users.groups = { linx = {}; };
     users.users.linx = {
       extraGroups = [ "linx" ];
+      isSystemUser = true;
     };
 
     services.nginx.virtualHosts."files.kevin.jp" =

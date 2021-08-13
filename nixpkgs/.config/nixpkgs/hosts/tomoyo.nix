@@ -30,9 +30,9 @@
   console.keyMap     = "us";
 
   environment.systemPackages = with pkgs; [
+     _1password
      socat
      iknow-devops
-     iknow-devops-legacy
      phraseapp_updater
      gitAndTools.diff-so-fancy
      unstablePkgs.gitAndTools.hub
@@ -117,12 +117,15 @@
         '';
     };
 
+    # proxy_max_temp_file_size needed for http2
+    # interface of unifi
     commonHttpConfig = ''
       map $http_accept_language $lang {
         default en;
         "~*^((|,)\s*(?!(ja|en))\w+(-\w+)?(;q=[\d\.]+)?)*(|,)\s*en\b" en;
         "~*^((|,)\s*(?!(ja|en))\w+(-\w+)?(;q=[\d\.]+)?)*(|,)\s*ja\b" ja;
       }
+      proxy_max_temp_file_size 0;
     '';
 
     virtualHosts."tomoyo.kevin.jp" = {
@@ -178,6 +181,7 @@
     virtualHosts."unifi.kevin.jp" = {
       enableACME = true;
       forceSSL   = true;
+      http2      = true;
       locations."/" = {
         proxyPass       = "https://localhost:8443";
         proxyWebsockets = true;

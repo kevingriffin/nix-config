@@ -359,7 +359,7 @@ in
         }) cfg.interfaces));
 
 
-    boot.extraModulePackages = [ kernel.wireguard ];
+    boot.extraModulePackages = [ pkgs.wireguard ];
     environment.systemPackages = [ pkgs.wireguard-tools ];
 
     systemd.services = (mapAttrs' generateSetupServiceUnit cfg.interfaces)

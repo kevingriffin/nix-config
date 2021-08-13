@@ -18,6 +18,7 @@ buildGoModule rec {
 
   postBuild = ''
     rice append --exec $GOPATH/bin/linx-server
+    rice embed-go
   '';
 
   dontStrip = true;

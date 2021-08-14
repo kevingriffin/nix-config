@@ -102,18 +102,18 @@
   environment.variables.OPENSC="/usr/lib/opensc-pkcs11.so";
 
   kevin.preboot-ssh = {
-    enable = false;
+    enable = true;
     identityFile = "/home/kevin/identities/ssh.json";
   };
 
   kevin.iknow-vpn = {
-    enable = false;
+    enable = true;
     ips    = [ "192.168.1.169/32" "2001:19f0:7001:3571:c0fe:0:f00:9/128" ];
     allowedIPs  = [ "0.0.0.0/0" "::/0" ];
   };
 
   kevin.tomoyo-vpn = {
-    enable     = false;
+    enable     = true;
     ips    = [ "192.168.2.5/32" "2001:19f0:7001:4b5d:1000::5/128"];
     allowedIPs  = [ "0.0.0.0/0" "::/0" ];
   };

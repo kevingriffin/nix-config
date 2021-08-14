@@ -1,7 +1,4 @@
 { config, pkgs, ... }:
-let
-  nmapPkg = pkgs.nmap-unfree or pkgs.nmap;
-in
 {
    environment.systemPackages = with pkgs; [
      ag
@@ -29,8 +26,6 @@ in
      lsof
      neovim
      nginx
-     nmapPkg
-     onefetch
      nmap-unfree
      nnn
      overmind

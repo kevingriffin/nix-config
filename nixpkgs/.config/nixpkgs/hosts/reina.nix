@@ -9,7 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     id3v2
-    pythonPackages.eyeD3
+    python3Packages.eyeD3
     opensc
   ];
 

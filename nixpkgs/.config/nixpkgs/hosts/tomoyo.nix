@@ -117,6 +117,28 @@
         '';
     };
 
+    virtualHosts."ffxiv.kevin.jp" = {
+      enableACME = true;
+      forceSSL   = true;
+
+      root = "/var/www/ffxiv.kevin.jp";
+
+      locations."/" = {
+        index    =  "index.html";
+      };
+
+      extraConfig = ''
+        charset UTF-8;
+
+        location ~* \.(jpg|jpeg|png|gif|ico)$ {
+          expires 30d;
+        }
+        location ~* \.(css|js)$ {
+          expires 7d;
+        }
+        '';
+    };
+
     # proxy_max_temp_file_size needed for http2
     # interface of unifi
     commonHttpConfig = ''

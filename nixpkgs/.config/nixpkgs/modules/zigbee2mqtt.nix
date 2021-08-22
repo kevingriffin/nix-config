@@ -6,7 +6,7 @@ in
   services.zigbee2mqtt = {
     enable = true;
     package = pkgs.zigbee2mqtt;
-    config = {
+    settings = {
       homeassistant = true;
       permit_join   = false;
       serial        = {
@@ -18,6 +18,4 @@ in
       };
     };
   };
-  # Needed to use 20.09 nixOS module with sufficiently new package for my hub
-  systemd.services.zigbee2mqtt.environment.ZIGBEE2MQTT_DATA = "/var/lib/zigbee2mqtt";
 }

@@ -5,9 +5,13 @@
      age
      bat
      bind
-     broot
      bundix
+     choose
      colordiff
+     curlie
+     dogdns
+     du-dust
+     exa
      git
      gitAndTools.delta
      gitAndTools.stgit
@@ -19,11 +23,13 @@
      htop
      httpie
      http-prompt
+     hyperfine
      iterm2-integration
      osc52-pbcopy
      jq
      lego
      lsof
+     mcfly
      neovim
      nginx
      nmap-unfree
@@ -48,5 +54,6 @@
      youtube-dl
      yank
      zstd
+     zoxide
    ];
 }

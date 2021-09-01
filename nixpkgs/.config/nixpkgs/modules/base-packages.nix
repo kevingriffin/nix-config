@@ -34,6 +34,7 @@
      nginx
      nmap-unfree
      nnn
+     nodePackages.typescript-language-server
      overmind
      pfetch
      pigz

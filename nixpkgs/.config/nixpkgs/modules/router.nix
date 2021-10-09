@@ -157,6 +157,7 @@ in
     { protocol = "tcp"; port = 8883;  to = { host = sesame; port = 50798; }; } # sesame wifi
     { protocol = "udp"; port = 9826;  to = { host = umaru;  port = 9826;  }; } # qbittorrent
     { protocol = "udp"; port = 123;   to = { host = sesame; port = 50798; }; } # sesame wifi
+    { protocol = "udp"; port = 50798; to.host = ""; } # wireguard
   ];
 
   networking.mape.portRangeForwards = [

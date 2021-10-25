@@ -1,10 +1,4 @@
 { config, pkgs, unstablePkgs, ... }:
-let
-  pinnedPkgs = import (builtins.fetchTarball {
-    url    = "https://releases.nixos.org/nixpkgs/nixpkgs-21.03pre266289.6834d03bb56/nixexprs.tar.xz";
-    sha256 = "0s80a8wahfrs4z78yvr4ikbw7p1xfkj5qm4kqy25jh863xkalch4";
-  }) {};
-in
 {
   imports = [
     (builtins.fetchGit {
@@ -105,21 +99,18 @@ in
       doInstallCheck = false;
     });
 
-    hap_python = pythonPackages: pythonPackages.callPackage ./packages/hap_python.nix { };
-    gatt       = pythonPackages: pythonPackages.callPackage ./packages/gatt_python.nix { };
-    fnvhash    = pythonPackages: pythonPackages.callPackage ./packages/fnvhash-python.nix { };
     pysesame2  = pythonPackages: pythonPackages.callPackage ./packages/pysesame2_python.nix { };
-    bravia_tv  = pythonPackages: pythonPackages.callPackage ./packages/bravia_tv_python.nix { };
-    aiohomekit = pythonPackages: pythonPackages.callPackage ./packages/aiohomekit_python.nix { };
-    base36     = pythonPackages: pythonPackages.callPackage ./packages/base36_python.nix { };
 
-    hassPkg = withoutTests (pinnedPkgs.home-assistant.override {
-      extraPackages = ps: with ps; [
-        xmltodict pexpect pyunifi paho-mqtt (hap_python ps)
-        netdisco  (pysesame2 ps) (bravia_tv ps) (gatt ps)
-        (aiohomekit ps) (base36 ps) (fnvhash ps) pkgs.ffmpeg
-        pythonPackages.ha-ffmpeg  pythonPackages.aiohttp pythonPackages.hass-nabucasa
-      ];
+    hassPkg = withoutTests (unstablePkgs.home-assistant.override {
+     extraComponents = [
+       "automation" "config" "conversation" "discovery" "frontend"
+       "group" "history" "homeassistant" "homekit"
+       "logbook" "map" "mqtt" "notify" "prometheus" "sun" "tasmota"
+       "tts" "homekit_controller" "braviatv" "ffmpeg" "sesame" "dhcp"
+       "default_config" "zha"
+     ];
+
+     extraPackages = ps: with ps; [ pkgs.ffmpeg (pysesame2 ps) ];
     });
 
     secrets = import ../secrets.nix;
@@ -163,12 +154,10 @@ in
 
       discovery = {};
 
-      media_player = [
-        {
-          platform = "braviatv";
-          host     = "192.168.11.94";
-        }
-      ];
+      # disable due to split network mDNS
+      zeroconf = {
+        default_interface = false;
+      };
 
       mqtt = {
         broker    = "127.0.0.1";
@@ -178,7 +167,7 @@ in
       };
 
       homekit = {
-        name = "Hass Bridge";
+        name = "Hass-Bridge";
 
         filter = {
           include_entities = [
@@ -419,9 +408,9 @@ in
   };
 
   networking.firewall.allowedTCPPorts = [
-    80 443     # nginx
-    1883       # mqtt
-    8123 51827 # home-assistant
+    80 443           # nginx
+    1883             # mqtt
+    8123 21063 21064 # home-assistant
   ];
 
   networking.firewall.allowedUDPPorts = [

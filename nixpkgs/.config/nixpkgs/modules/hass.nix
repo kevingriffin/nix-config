@@ -113,12 +113,13 @@
     pysesame2  = pythonPackages: pythonPackages.callPackage ./packages/pysesame2_python.nix { };
 
     hassPkg = withoutTests (unstablePkgs.home-assistant.override {
+      # pvoutput has the same requirements as the "sensor" integration
      extraComponents = [
        "automation" "config" "conversation" "discovery" "frontend"
        "group" "history" "homeassistant" "homekit"
        "logbook" "map" "mqtt" "notify" "prometheus" "sun" "tasmota"
        "tts" "homekit_controller" "braviatv" "ffmpeg" "sesame" "dhcp"
-       "default_config" "zha"
+       "default_config" "zha" "pvoutput"
      ];
 
      extraPackages = ps: with ps; [ pkgs.ffmpeg (pysesame2 ps) ];
@@ -206,6 +207,7 @@
             "input_boolean.switch_3_button_3"
             "input_boolean.switch_3_button_2"
             "input_boolean.switch_3_button_1"
+            "cover.curtains"
           ];
         };
       };
@@ -216,6 +218,83 @@
           api_key  = secrets.sesame-token;
         }
       ];
+
+      rest_command = {
+        switchbot_device_command = {
+          url = "https://api.switch-bot.com/v1.0/devices/{{ deviceId }}/commands";
+          method = "post";
+          headers = {
+            Authorization =  "${secrets.switchbot_api_key}";
+            Content-Type = "application/json";
+          };
+          payload = "{\"command\": \"{{ command }}\",\"parameter\": \"{{ parameter }}\"}";
+        };
+      };
+
+      sensor = [
+        {
+          platform = "rest";
+          name = "Curtain Position";
+          resource = "https://api.switch-bot.com/v1.0/devices/FBF52AB535AB/status";
+          method = "GET";
+          scan_interval = 30;
+          headers = {
+            Authorization =  "${secrets.switchbot_api_key}";
+            Content-Type = "application/json";
+          };
+          value_template = "{{ 100 - value_json.body.slidePosition }}";
+          json_attributes_path = "$.body";
+          json_attributes = [
+            "deviceId"
+            "deviceType"
+            "hubDeviceId"
+            "calibrate"
+            "group"
+            "moving"
+            "slidePosition"
+          ];
+        }
+      ];
+
+      cover = {
+        platform = "template";
+        covers = {
+          curtains = {
+            device_class = "curtain";
+            friendly_name = "Curtains";
+            position_template = "{{ states('sensor.curtain_position') }}";
+            open_cover = {
+              service = "rest_command.switchbot_device_command";
+              data = {
+                deviceId = "";
+                command = "turnOn";
+              };
+            };
+            close_cover = {
+              service = "rest_command.switchbot_device_command";
+              data = {
+                deviceId = "FBF52AB535AB";
+                command = "turnOff";
+              };
+            };
+            stop_cover = {
+              service = "rest_command.switchbot_device_command";
+              data = {
+                deviceId = "FBF52AB535AB";
+                command = "turnOff";
+              };
+            };
+            set_cover_position = {
+              service = "rest_command.switchbot_device_command";
+              data = {
+                deviceId = "FBF52AB535AB";
+                command = "setPosition";
+                parameter = "0,ff,{{100 - position}}";
+              };
+            };
+          };
+        };
+      };
 
       group = {};
 

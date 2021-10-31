@@ -63,6 +63,17 @@
       hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
     };
 
+    users.easymqtt = {
+      acl = [
+        "topic readwrite homeassistant/#"
+        "topic readwrite zigbee2mqtt/#"
+        "topic read homie/#"
+        "topic read sht/#"
+        "topic readwrite tasmota/#"
+      ];
+      hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
+    };
+
     users.zigbee = {
       acl = [
         "topic readwrite homeassistant/#"

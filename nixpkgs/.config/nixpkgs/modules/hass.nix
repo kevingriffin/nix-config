@@ -207,6 +207,20 @@
             "input_boolean.switch_3_button_3"
             "input_boolean.switch_3_button_2"
             "input_boolean.switch_3_button_1"
+            "input_boolean.switch_4_button_1"
+            "input_boolean.switch_5_button_3"
+            "input_boolean.switch_5_button_2"
+            "input_boolean.switch_5_button_1"
+            "input_boolean.switch_6_button_2"
+            "input_boolean.switch_6_button_1"
+            "input_boolean.switch_7_button_4"
+            "input_boolean.switch_7_button_3"
+            "input_boolean.switch_7_button_2"
+            "input_boolean.switch_7_button_1"
+            "input_boolean.switch_8_button_4"
+            "input_boolean.switch_8_button_3"
+            "input_boolean.switch_8_button_2"
+            "input_boolean.switch_8_button_1"
             "cover.curtains"
           ];
         };
@@ -539,6 +553,287 @@
             };
           };
         }
+        {
+          id = "switch_4_button_1";
+          alias = "switch_4_button_1";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x5c0272fffe1c89c8";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == 'single' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_4_button_1";
+            };
+          };
+        }
+        {
+          id = "switch_5_button_1";
+          alias = "switch_5_button_1";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x5c0272fffe22948c";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == '1_single' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_5_button_1";
+            };
+          };
+        }
+        {
+          id = "switch_5_button_2";
+          alias = "switch_5_button_2";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x5c0272fffe22948c";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == '2_single' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_5_button_2";
+            };
+          };
+        }
+        {
+          id = "switch_5_button_3";
+          alias = "switch_5_button_3";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x5c0272fffe22948c";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == '3_single' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_5_button_3";
+            };
+          };
+        }
+        {
+          id = "switch_6_button_1";
+          alias = "switch_6_button_1";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x60a423fffe6ecc88";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == '1_single' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_6_button_1";
+            };
+          };
+        }
+        {
+          id = "switch_6_button_2";
+          alias = "switch_6_button_2";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x60a423fffe6ecc88";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == '2_single' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_6_button_2";
+            };
+          };
+        }
+        {
+          id = "switch_7_button_4";
+          alias = "switch_7_button_4";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x84fd27fffe8d4f51";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_down' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_7_button_4";
+            };
+          };
+        }
+        {
+          id = "switch_7_button_3";
+          alias = "switch_7_button_3";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x84fd27fffe8d4f51";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == 'off' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_7_button_3";
+            };
+          };
+        }
+        {
+          id = "switch_7_button_2";
+          alias = "switch_7_button_2";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x84fd27fffe8d4f51";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_up' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_7_button_2";
+            };
+          };
+        }
+        {
+          id = "switch_7_button_1";
+          alias = "switch_7_button_1";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x84fd27fffe8d4f51";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == 'on' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_7_button_1";
+            };
+          };
+        }
+        {
+          id = "switch_8_button_4";
+          alias = "switch_8_button_4";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x847127fffe09c26f";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_down' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_8_button_4";
+            };
+          };
+        }
+        {
+          id = "switch_8_button_3";
+          alias = "switch_8_button_3";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x847127fffe09c26f";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == 'off' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_8_button_3";
+            };
+          };
+        }
+        {
+          id = "switch_8_button_2";
+          alias = "switch_8_button_2";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x847127fffe09c26f";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_up' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_8_button_2";
+            };
+          };
+        }
+        {
+          id = "switch_8_button_1";
+          alias = "switch_8_button_1";
+          trigger = {
+            platform = "mqtt";
+            topic = "zigbee2mqtt/0x847127fffe09c26f";
+          };
+
+          condition = {
+            condition = "template";
+            value_template = "{{ trigger.payload_json['action'] == 'on' }}";
+          };
+
+          action = {
+            service = "input_boolean.toggle";
+            target = {
+              entity_id = "input_boolean.switch_8_button_1";
+            };
+          };
+        }
+
       ];
 
       input_boolean = {
@@ -578,6 +873,49 @@
         switch_3_button_1 = {
           name = "Switch 3 Button 1";
         };
+        switch_4_button_1 = {
+          name = "Switch 4 Button 1";
+        };
+        switch_5_button_3 = {
+          name = "Switch 5 Button 3";
+        };
+        switch_5_button_2 = {
+          name = "Switch 5 Button 2";
+        };
+        switch_5_button_1 = {
+          name = "Switch 5 Button 1";
+        };
+        switch_6_button_2 = {
+          name = "Switch 6 Button 2";
+        };
+        switch_6_button_1 = {
+          name = "Switch 6 Button 1";
+        };
+        switch_7_button_4 = {
+          name = "Switch 7 Button 4";
+        };
+        switch_7_button_3 = {
+          name = "Switch 7 Button 3";
+        };
+        switch_7_button_2 = {
+          name = "Switch 7 Button 2";
+        };
+        switch_7_button_1 = {
+          name = "Switch 7 Button 1";
+        };
+        switch_8_button_4 = {
+          name = "Switch 8 Button 4";
+        };
+        switch_8_button_3 = {
+          name = "Switch 8 Button 3";
+        };
+        switch_8_button_2 = {
+          name = "Switch 8 Button 2";
+        };
+        switch_8_button_1 = {
+          name = "Switch 8 Button 1";
+        };
+
       };
 
       script     = {};

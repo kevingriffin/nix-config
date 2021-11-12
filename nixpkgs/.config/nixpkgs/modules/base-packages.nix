@@ -51,6 +51,7 @@
      tmux-cssh
      tree
      unzip
+     xh
      xsv
      youtube-dl
      yank

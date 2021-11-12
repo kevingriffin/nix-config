@@ -49,11 +49,6 @@
   # Make gpg always request password at terminal
   environment.variables.PINENTRY_USER_DATA = "USE_CURSES=1";
 
-  services.openssh = {
-    passwordAuthentication          = false;
-    challengeResponseAuthentication = false;
-  };
-
   nix = {
     distributedBuilds = true;
   };

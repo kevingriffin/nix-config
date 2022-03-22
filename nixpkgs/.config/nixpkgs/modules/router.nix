@@ -100,7 +100,7 @@ in
       elements = with hosts.v6; [
         umaru
         erika
-        rinoa
+        tsukihi
         reina
       ];
     };
@@ -110,7 +110,7 @@ in
       elements = with hosts.v6; [
         erika
         umaru
-        rinoa
+        tsukihi
         reina
       ];
     };
@@ -118,7 +118,7 @@ in
     tables.filter.sets.ard-hosts = {
       type = "ipv6_addr";
       elements = with hosts.v6; [
-        rinoa
+        tsukihi
         reina
       ];
     };
@@ -128,7 +128,7 @@ in
       elements = with hosts.v6; [
         erika
         umaru
-        rinoa
+        tsukihi
       ];
     };
 

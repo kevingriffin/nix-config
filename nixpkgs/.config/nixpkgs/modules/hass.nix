@@ -37,71 +37,56 @@
   in
   {
     enable         = true;
-    host           = "0.0.0.0";
-    allowAnonymous = true;
-    checkPasswords = true;
-    ssl = {
-      enable = false;
-    };
+    # aclExtraConf = ''
+    #   topic read $SYS/#
+    #   topic read homie/#
+    #   topic read ir/#
+    #   topic read sht/#
+    #   topic read homeassistant/#
+    # '';
 
-    aclExtraConf = ''
-      topic read $SYS/#
-      topic read homie/#
-      topic read ir/#
-      topic read sht/#
-      topic read homeassistant/#
-    '';
+    listeners = [{
+      address = "0.0.0.0";
+      settings.allow_anonymous = true;
+      omitPasswordAuth = false;
+      acl = [ "topic readwrite #" ];
 
-    users.hass = {
-      acl = [
-        "topic readwrite homeassistant/#"
-        "topic readwrite zigbee2mqtt/#"
-        "topic read homie/#"
-        "topic read sht/#"
-        "topic readwrite tasmota/#"
-      ];
-      hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
-    };
+      users.hass = {
+        acl = [
+          "readwrite #"
+        ];
+        hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
+      };
 
-    users.easymqtt = {
-      acl = [
-        "topic readwrite homeassistant/#"
-        "topic readwrite zigbee2mqtt/#"
-        "topic read homie/#"
-        "topic read sht/#"
-        "topic readwrite tasmota/#"
-      ];
-      hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
-    };
+      users.easymqtt = {
+        acl = [
+          "readwrite #"
+        ];
+        hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
+      };
 
-    users.zigbee = {
-      acl = [
-        "topic readwrite homeassistant/#"
-        "topic readwrite zigbee2mqtt/#"
-        "topic read homie/#"
-        "topic read sht/#"
-      ];
-      hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
-    };
+      users.zigbee = {
+        acl = [
+          "readwrite #"
+        ];
+        hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
+      };
 
-    users.hass_ir_adapter = {
-      acl = [
-        "topic readwrite homeassistant/#"
-        "topic readwrite ir/#"
-        "topic read sht/#"
-        "topic read homie/#"
-        "topic readwrite tasmota/#"
-      ];
-      hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
-    };
+      users.hass_ir_adapter = {
+        acl = [
+          "readwrite #"
+        ];
+        hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
+      };
 
-    users.tasmota = {
-      acl = [
-        "topic readwrite homeassistant/#"
-        "pattern readwrite tasmota/%c/#"
-      ];
-      hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
-    };
+      users.tasmota = {
+        acl = [
+          "readwrite #"
+        ];
+        hashedPassword = secrets.mosquitto-hass-ir-hashed-password;
+      };
+    }];
+
   };
 
   services.home-assistant = let

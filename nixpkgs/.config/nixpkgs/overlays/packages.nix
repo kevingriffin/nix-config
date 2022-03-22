@@ -14,7 +14,6 @@ self: super: {
   ndppd = super.callPackage ./packages/ndppd {};
   linx-server = super.callPackage ./packages/linx-server.nix {};
   go-rice = super.callPackage ./packages/go-rice.nix {};
-  nomino = super.callPackage ./packages/nomino.nix {};
   osc52-pbcopy = super.callPackage ./packages/osc52-pbcopy.nix {};
   iterm2-integration = super.callPackage ./packages/iterm2-integration.nix {};
   tig = super.tig.override({ readline = super.readline81; });

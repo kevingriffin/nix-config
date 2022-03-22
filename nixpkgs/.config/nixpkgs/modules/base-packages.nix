@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
 {
    environment.systemPackages = with pkgs; [
-     ag
-     age
      bat
-     bind
      bundix
      choose
      colordiff
@@ -14,6 +11,7 @@
      exa
      git
      gitAndTools.delta
+     gitAndTools.gh
      gitAndTools.stgit
      fd
      fx
@@ -21,7 +19,6 @@
      gnumake
      gnupg
      htop
-     httpie
      http-prompt
      hyperfine
      iterm2-integration
@@ -29,12 +26,11 @@
      jq
      lego
      lsof
-     mcfly
      neovim
      nginx
      nmap-unfree
-     nnn
      nodePackages.typescript-language-server
+     nomino
      overmind
      pfetch
      pigz
@@ -42,6 +38,7 @@
      ripgrep
      rsync
      sd
+     silver-searcher
      speedtest-cli
      sshpass
      stow
@@ -56,6 +53,5 @@
      youtube-dl
      yank
      zstd
-     zoxide
    ];
 }

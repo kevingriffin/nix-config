@@ -6,21 +6,18 @@
      bundix
      choose
      colordiff
-     curlie
      dogdns
      du-dust
      exa
      git
      gitAndTools.delta
      gitAndTools.gh
-     gitAndTools.stgit
      fd
      fx
      fzf
      gnumake
      gnupg
      htop
-     http-prompt
      hyperfine
      iterm2-integration
      osc52-pbcopy
@@ -28,7 +25,6 @@
      lego
      lsof
      neovim
-     nginx
      nmap-unfree
      nomino
      overmind
@@ -42,11 +38,11 @@
      speedtest-cli
      sshpass
      stow
-     tmate
      tig
      tmux
      tmux-cssh
      tree
+     tree-sitter
      unzip
      xh
      xsv

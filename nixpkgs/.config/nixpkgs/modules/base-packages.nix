@@ -30,7 +30,6 @@
      neovim
      nginx
      nmap-unfree
-     nodePackages.typescript-language-server
      nomino
      overmind
      pfetch

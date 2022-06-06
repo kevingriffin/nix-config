@@ -5,6 +5,7 @@
   imports = [
     ../modules/base-packages.nix
     ../modules/ruby-development.nix
+    ../modules/typescript-development.nix
   ];
 
   nix.extraOptions = "extra-platforms = x86_64-darwin aarch64-darwin";

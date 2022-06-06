@@ -118,7 +118,6 @@
   {
     enable              = true;
     package             = hassPkg;
-    autoExtraComponents = false;
 
     config = {
       homeassistant = {

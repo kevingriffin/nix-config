@@ -13,14 +13,13 @@
      (import ../modules/hass.nix { inherit config pkgs unstablePkgs; })
     ];
 
-  boot.loader.systemd-boot.enable      = true;
-  boot.loader.efi.canTouchEfiVariables = false;
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.enable                = true;
+  boot.loader.grub.version               = 2;
+  boot.loader.grub.efiSupport            = true;
   boot.loader.grub.efiInstallAsRemovable = true;
-  boot.loader.grub.device = "nodev"; # or "nodev" for efi only
+  boot.loader.grub.device                = "nodev"; # or "nodev" for efi only
+  boot.loader.efi.canTouchEfiVariables   = false;
 
   networking.hostName = "pleinair";
 
@@ -32,13 +31,6 @@
     enable = true;
     openFirewall = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    gitAndTools.diff-so-fancy
-    unstablePkgs.gitAndTools.hub
-    gitFull
-    git-lfs
-  ];
 
   services.borgBackup = let
     secrets = import ../secrets.nix;

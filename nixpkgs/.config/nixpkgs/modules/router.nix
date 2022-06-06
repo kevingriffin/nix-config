@@ -7,7 +7,7 @@ in
   nixpkgs.overlays = [ (self: super: {
     dhcpcd = super.dhcpcd.overrideAttrs (attrs: {
       configureFlags = (attrs.configureFlags or []) ++ [ "--disable-auth" ];
-      patches = (attrs.patches or []) ++ [ ./dhcpcd-no-default-options.patch ./dhcpcd-ll-duid.patch ];
+      patches = (attrs.patches or []) ++ [ ./dhcpcd-no-default-options.patch ];
     });
   }) ];
 
@@ -32,6 +32,7 @@ in
     noipv6rs
     nodhcp
     noipv4
+    duid ll
     interface ${upstreamIf}
       ipv6rs
       nooption dhcp6_vivco

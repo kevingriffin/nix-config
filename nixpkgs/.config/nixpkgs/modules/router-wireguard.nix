@@ -11,7 +11,7 @@ let
 in
 {
 
-  environment.systemPackages = [ pkgs.wireguard ] ;
+  environment.systemPackages = [ pkgs.wireguard-tools ] ;
   networking.wireguard.interfaces = {
     wg0 = {
       ips = [ "${wireguardPrefix}::1/64" ];

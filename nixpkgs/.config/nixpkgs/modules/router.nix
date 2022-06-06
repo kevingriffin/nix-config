@@ -102,7 +102,6 @@ in
         umaru
         erika
         tsukihi
-        reina
       ];
     };
 
@@ -112,7 +111,6 @@ in
         erika
         umaru
         tsukihi
-        reina
       ];
     };
 
@@ -120,7 +118,6 @@ in
       type = "ipv6_addr";
       elements = with hosts.v6; [
         tsukihi
-        reina
       ];
     };
 

@@ -29,7 +29,6 @@ in
       dhcp-host=9C:5C:8E:BC:05:C0,192.168.11.3  # erika
       dhcp-host=F0:2F:74:FA:14:63,192.168.11.80 # umaru
       dhcp-host=64:4B:F0:19:F4:9D,192.168.11.92 # rinoa
-      dhcp-host=98:5A:EB:DD:EB:5F,192.168.11.58 # reina
       dhcp-host=90:48:9A:85:70:1A,192.168.11.94 # tvb928217d081b
       dhcp-host=00:0E:C6:E5:58:F4,192.168.11.98
       dhcp-host=00:22:CF:F6:C4:C9,192.168.11.96

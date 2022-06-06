@@ -1,11 +1,14 @@
 { config, pkgs, unstablePkgs, ... }:
 {
+  # disabledModules = [ "services/misc/home-assistant.nix" ];
+
   imports = [
     (builtins.fetchGit {
       url = "https://github.com/thefloweringash/hass_ir_adapter";
       ref = "master";
       rev = "3ad4405119cc10b055dd9d5945c4f291e0f714ae";
     } + "/nix/module.nix")
+    # ./home-assistant.nix
   ];
 
   security.acme.email       = "me@kevin.jp";
@@ -97,7 +100,7 @@
 
     pysesame2  = pythonPackages: pythonPackages.callPackage ./packages/pysesame2_python.nix { };
 
-    hassPkg = withoutTests (unstablePkgs.home-assistant.override {
+    hassPkg = withoutTests (pkgs.home-assistant.override {
       # pvoutput has the same requirements as the "sensor" integration
      extraComponents = [
        "automation" "config" "conversation" "discovery" "frontend"

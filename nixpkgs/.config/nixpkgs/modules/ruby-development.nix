@@ -2,9 +2,12 @@
 
 {
   environment.systemPackages = with pkgs; [
-    ruby_3_0
-    seeing_is_believing
+    ruby_3_1
     rubocop
+    direnv
+    lorri
   ];
+
+  environment.variables.DIRENV_LOG_FORMAT = "";
 
 }

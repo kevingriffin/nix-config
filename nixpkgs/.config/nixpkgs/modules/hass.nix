@@ -390,7 +390,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_down' }}";
+            value_template = "{{ trigger.payload_json['action'] == '4_single' }}";
           };
 
           action = {
@@ -410,7 +410,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'off' }}";
+            value_template = "{{ trigger.payload_json['action'] == '3_single' }}";
           };
 
           action = {
@@ -430,7 +430,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_up' }}";
+            value_template = "{{ trigger.payload_json['action'] == '2_single' }}";
           };
 
           action = {
@@ -450,7 +450,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'on' }}";
+            value_template = "{{ trigger.payload_json['action'] == '1_single' }}";
           };
 
           action = {
@@ -470,7 +470,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_down' }}";
+            value_template = "{{ trigger.payload_json['action'] == '4_single' }}";
           };
 
           action = {
@@ -490,7 +490,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'off' }}";
+            value_template = "{{ trigger.payload_json['action'] == '3_single' }}";
           };
 
           action = {
@@ -510,7 +510,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_up' }}";
+            value_template = "{{ trigger.payload_json['action'] == '2_single' }}";
           };
 
           action = {
@@ -530,7 +530,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'on' }}";
+            value_template = "{{ trigger.payload_json['action'] == '1_single' }}";
           };
 
           action = {
@@ -670,7 +670,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_down' }}";
+            value_template = "{{ trigger.payload_json['action'] == '4_single' }}";
           };
 
           action = {
@@ -690,7 +690,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'off' }}";
+            value_template = "{{ trigger.payload_json['action'] == '3_single' }}";
           };
 
           action = {
@@ -710,7 +710,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_up' }}";
+            value_template = "{{ trigger.payload_json['action'] == '2_single' }}";
           };
 
           action = {
@@ -730,7 +730,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'on' }}";
+            value_template = "{{ trigger.payload_json['action'] == '1_single' }}";
           };
 
           action = {
@@ -750,7 +750,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_down' }}";
+            value_template = "{{ trigger.payload_json['action'] == '4_single' }}";
           };
 
           action = {
@@ -770,7 +770,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'off' }}";
+            value_template = "{{ trigger.payload_json['action'] == '3_single' }}";
           };
 
           action = {
@@ -790,7 +790,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'brightness_step_up' }}";
+            value_template = "{{ trigger.payload_json['action'] == '2_single' }}";
           };
 
           action = {
@@ -810,7 +810,7 @@
 
           condition = {
             condition = "template";
-            value_template = "{{ trigger.payload_json['action'] == 'on' }}";
+            value_template = "{{ trigger.payload_json['action'] == '1_single' }}";
           };
 
           action = {

@@ -1,51 +1,25 @@
-{ config, pkgs, unstablePkgs, ... }:
+{ config, pkgs, modulesPath, unstablePkgs, ... }:
 
 {
   imports = [
-    ../modules/preboot-ssh.nix
-    ../modules/vpn.nix
-    ../modules/prometheus.nix
-    ../modules/matrix-synapse.nix
     ../modules/borg-backup
-    ../modules/znc.nix
-    ../modules/linx-server.nix
     ../modules/miniflux.nix
+    "${modulesPath}/virtualisation/amazon-image.nix"
     (import ../modules/base-packages.nix { inherit config pkgs; })
-   ];
+  ];
 
-  boot.loader.grub.enable  = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device  = "/dev/vda";
-
-  boot.initrd.luks.devices = {
-    rootdev = {
-    device  = "/dev/vda2";
-    preLVM  = true;
-    };
-  };
+  ec2.hvm = true;
+  ec2.efi = true;
 
   nix.buildCores = 2;
 
   console.font       = "Lat2-Terminus16";
   console.keyMap     = "us";
 
-  environment.systemPackages = with pkgs; [
-     _1password
-     socat
-     iknow-devops
-     phraseapp_updater
-     gitAndTools.diff-so-fancy
-     unstablePkgs.gitAndTools.hub
-     gitFull
-     git-lfs
-  ];
-
   time.timeZone = "Asia/Tokyo";
 
   networking.hostName = "tomoyo";
   networking.firewall.allowedTCPPorts = [ 80 443 ];
-
-  kevin.linx-server.enable = true;
 
   services.borgBackup = let
     secrets = import ../secrets.nix;
@@ -70,21 +44,6 @@
     unifiPackage = unstablePkgs.unifiStable;
     openPorts    = true;
   };
-
-  services.prometheus.exporters.node = {
-    enable       = true;
-    openFirewall = false;
-  };
-
-  services.grafana = {
-    enable                = true;
-    port                  = 4000;
-    addr                  = "[::]";
-    domain                = "grafana.kevin.jp";
-    rootUrl               = "https://grafana.kevin.jp";
-    auth.anonymous.enable = false;
-  };
-
 
   security.acme.email       = "me@kevin.jp";
   security.acme.acceptTerms = true;
@@ -150,56 +109,6 @@
       proxy_max_temp_file_size 0;
     '';
 
-    virtualHosts."tomoyo.kevin.jp" = {
-      enableACME = true;
-      forceSSL   = true;
-
-      locations."/" = {
-        proxyPass = "http://localhost:3000";
-      };
-
-      locations."/prometheus" = {
-        proxyPass   = "http://localhost:9090";
-        extraConfig = ''
-          auth_basic           "Prometheus";
-          auth_basic_user_file /etc/nixos/.htpasswd;
-          '';
-      };
-
-      locations."/grafana" = {
-        proxyPass   = "http://localhost:4000";
-        extraConfig = ''
-          rewrite  ^/grafana/(.*)  /$1 break;
-          '';
-      };
-    };
-
-    virtualHosts."grafana.kevin.jp" = {
-      enableACME = true;
-      forceSSL   = true;
-
-      locations."/" = {
-        proxyPass   = "http://localhost:4000";
-      #   extraConfig = ''
-      #     rewrite  ^/grafana/(.*)  /$1 break;
-      #     '';
-      };
-    };
-
-    virtualHosts."prometheus.kevin.jp" = {
-      enableACME = true;
-      forceSSL   = true;
-
-
-      locations."/" = {
-        proxyPass   = "http://localhost:9090";
-        extraConfig = ''
-          auth_basic           "Prometheus";
-          auth_basic_user_file /etc/nixos/.htpasswd;
-          '';
-      };
-    };
-
     virtualHosts."unifi.kevin.jp" = {
       enableACME = true;
       forceSSL   = true;
@@ -224,34 +133,11 @@
     };
   };
 
-  kevin.preboot-ssh = {
-    enable       = true;
-    identityFile = "/home/kevin/identities/ssh.json";
-  };
-
-  kevin.iknow-vpn = {
-    enable     = true;
-    ips        = [ "192.168.1.165/32" "2001:19f0:7001:3571:c0fe:0:f00:5/128" ];
-    allowedIPs = [ "0.0.0.0/0" "::/0" ];
-  };
-
-  kevin.vpn-host = {
-    enable         = true;
-    prefix         = "2001:19f0:7001:4b5d:1000";
-    prefixLength   = 68;
-    v4Base         = "192.168.2";
-    port           = 52337;
-    upstreamIfname = "ens3";
-    neighborProxy  = true;
-
-    peers = (builtins.fromJSON (builtins.readFile "/home/kevin/identities/wireguard-hosts.json"));
-  };
-
   users.users.git = {
     isNormalUser = true;
     home         = "/home/git";
     description  = "git";
   };
 
-  system.stateVersion = "19.03";
+  system.stateVersion = "22.05";
 }

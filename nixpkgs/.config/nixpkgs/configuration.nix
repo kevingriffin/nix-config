@@ -1,8 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, modulesPath, ... }:
 
 let
   unstablePkgs = import <nixpkgs-unstable> {
@@ -13,7 +9,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    (import ./local.nix { inherit config pkgs lib unstablePkgs; })
+    (import ./local.nix { inherit config pkgs lib modulesPath unstablePkgs; })
   ];
 
   nix.useSandbox = true;
@@ -29,25 +25,20 @@ in
 
   environment.systemPackages = with pkgs; [
     borgbackup
-    traceroute
-    sshfs
     pinentry
   ];
 
-  # Use neovim as default editor
   environment.variables.EDITOR = "nvim";
 
   programs.ssh.startAgent = true;
 
   programs.gnupg.agent = {
-    enable = true;
+    enable           = true;
     enableSSHSupport = false;
-    pinentryFlavor = "curses";
+    pinentryFlavor   = "curses";
   };
 
-  programs.mtr.enable     = true;
-
-  programs.mosh.enable    = true;
+  programs.mtr.enable = true;
 
   programs.fish = {
     enable = true;
@@ -70,17 +61,14 @@ in
     enable                          = true;
     passwordAuthentication          = false;
     challengeResponseAuthentication = false;
-    permitRootLogin                 = "no";
   };
 
   networking.firewall = {
     allowPing       = true;
     rejectPackets   = true;
-    allowedTCPPorts = [ 3000 ] ;
+    allowedTCPPorts = [ 22 ] ;
   };
 
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kevin = {
     uid          = 1000;
     isNormalUser = true;

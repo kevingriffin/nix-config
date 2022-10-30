@@ -58,9 +58,9 @@ in
   environment.variables.FZF_ALT_C_COMMAND = "fd -t d .";
 
   services.openssh = {
-    enable                          = true;
-    passwordAuthentication          = false;
-    challengeResponseAuthentication = false;
+    enable                       = true;
+    passwordAuthentication       = false;
+    kbdInteractiveAuthentication = false;
   };
 
   networking.firewall = {

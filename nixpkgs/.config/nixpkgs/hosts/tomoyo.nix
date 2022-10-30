@@ -40,13 +40,13 @@
   services.postgresql.enable = true;
 
   services.unifi = {
-    enable       = true;
-    unifiPackage = unstablePkgs.unifiStable;
-    openPorts    = true;
+    enable          = true;
+    unifiPackage    = unstablePkgs.unifiStable;
+    openFirewall    = true;
   };
 
-  security.acme.email       = "me@kevin.jp";
-  security.acme.acceptTerms = true;
+  security.acme.defaults.email = "me@kevin.jp";
+  security.acme.acceptTerms    = true;
 
   services.nginx = {
     enable = true;

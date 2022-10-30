@@ -12,6 +12,9 @@
 
   # Auto upgrade nix package and the daemon service.
   nix.package                = pkgs.nix;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
   services.nix-daemon.enable = true;
 
   programs.fish = {

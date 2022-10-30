@@ -20,7 +20,7 @@
 
   # You should generally set this to the total number of logical cores in your system.
   # $ sysctl -n hw.ncpu
-  nix.maxJobs    = 6;
-  nix.buildCores = 10;
+  nix.settings.max-jobs = 6;
+  nix.settings.cores    = 8;
 
 }

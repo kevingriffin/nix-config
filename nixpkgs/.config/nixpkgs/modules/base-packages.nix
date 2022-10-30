@@ -25,7 +25,7 @@
       lego
       lsof
       neovim
-      nmap-unfree
+      nmap
       nomino
       overmind
       pfetch
@@ -50,4 +50,5 @@
       yank
       zstd
     ];
+
 }

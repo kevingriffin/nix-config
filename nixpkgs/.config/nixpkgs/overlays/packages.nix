@@ -2,7 +2,6 @@ let
   branchCtlRepo = fetchGit { url = "git@github.com:iknow/branchctl"; ref = "master"; };
 in
 self: super: {
-  babelfish = super.callPackage ./packages/babelfish.nix {};
   seeing_is_believing = super.callPackage ./packages/seeing_is_believing/default.nix {};
   iknow-devops = super.callPackage ./packages/iknow-devops.nix {};
   phraseapp_updater = super.callPackage ./packages/phraseapp_updater {};

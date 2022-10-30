@@ -1,13 +1,13 @@
 { stdenv, lib, buildEnv
 , kubectl, kops, kubectx, kustomize, kube-ps1
-, skopeo, cfn_flip, k9s, awscli
+, skopeo, cfn_flip, k9s, awscli2
 }:
 
 buildEnv {
   name = "iknow-devops";
   pathsToLink = [ "/bin" ];
   paths = [
-    awscli
+    awscli2
     k9s
     kubectl
     kops
@@ -15,6 +15,5 @@ buildEnv {
     kustomize
     kube-ps1
     skopeo
-    cfn_flip
   ];
 }

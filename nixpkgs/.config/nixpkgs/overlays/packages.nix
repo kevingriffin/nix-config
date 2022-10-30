@@ -1,6 +1,3 @@
-let
-  branchCtlRepo = fetchGit { url = "git@github.com:iknow/branchctl"; ref = "master"; };
-in
 self: super: {
   seeing_is_believing = super.callPackage ./packages/seeing_is_believing/default.nix {};
   iknow-devops = super.callPackage ./packages/iknow-devops.nix {};
@@ -16,12 +13,6 @@ self: super: {
   osc52-pbcopy = super.callPackage ./packages/osc52-pbcopy.nix {};
   iterm2-integration = super.callPackage ./packages/iterm2-integration.nix {};
   tig = super.tig.override({ readline = super.readline81; });
-
-  branchctl = self.callPackage "${branchCtlRepo}/nix/branchctl.nix" {};
-
-  branchctlPlugins = {
-    branchctl-secret-gpg = self.callPackage "${branchCtlRepo}/plugins/branchctl-secret-gpg" {};
-  };
 
   # Workarounds for packages that misbehave on macOS
   gixy = super.gixy.overrideAttrs(attrs: {

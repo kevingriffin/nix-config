@@ -6,12 +6,16 @@
     ../modules/base-packages.nix
     ../modules/ruby-development.nix
     ../modules/typescript-development.nix
+    ../modules/iknow-development.nix
   ];
 
   nix.extraOptions = "extra-platforms = x86_64-darwin aarch64-darwin";
 
+  # Use the login keychain with aws-vault
+  environment.variables.AWS_VAULT_KEYCHAIN_NAME = "login";
+
   environment.systemPackages = with pkgs; [
-     branchctl
+     iknow-devops
   ];
 
   # Used for backwards compatibility, please read the changelog before changing.

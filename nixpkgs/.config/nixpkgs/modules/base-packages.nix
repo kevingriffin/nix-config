@@ -19,9 +19,11 @@
       gnupg
       htop
       hyperfine
+      igrep
       iterm2-integration
       osc52-pbcopy
       jq
+      jless
       lego
       lsof
       neovim
@@ -50,5 +52,4 @@
       yank
       zstd
     ];
-
 }

@@ -11,20 +11,20 @@
     # ./home-assistant.nix
   ];
 
-  security.acme.email       = "me@kevin.jp";
-  security.acme.acceptTerms = true;
+  security.acme.defaults.email = "me@kevin.jp";
+  security.acme.acceptTerms    = true;
 
   services.nginx = {
     enable                   = true;
     recommendedProxySettings = true;
-    virtualHosts."hass.kevin.jp" = {
-      forceSSL   = true;
-      enableACME = true;
-      locations."/" = {
-        proxyPass       = "http://127.0.0.1:8123";
-        proxyWebsockets = true;
-      };
-    };
+    /* virtualHosts."hass.kevin.jp" = {*/
+    /*   forceSSL   = true;*/
+    /*   enableACME = true;*/
+    /*   locations."/" = {*/
+    /*     proxyPass       = "http://127.0.0.1:8123";*/
+    /*     proxyWebsockets = true;*/
+    /*   };*/
+    /* };*/
     virtualHosts."mqtt.kevin.jp" = {
       forceSSL   = true;
       enableACME = true;

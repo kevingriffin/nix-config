@@ -26,9 +26,9 @@ in
       dhcp-range=192.168.11.50,192.168.11.100,255.255.255.0,192.168.11.255,12h
       dhcp-range=::,static
 
-      dhcp-host=9C:5C:8E:BC:05:C0,192.168.11.3  # erika
+      dhcp-host=74:4D:28:FA:46:85,192.168.11.2  # switch
       dhcp-host=F0:2F:74:FA:14:63,192.168.11.80 # umaru
-      dhcp-host=64:4B:F0:19:F4:9D,192.168.11.92 # rinoa
+      dhcp-host=64:4B:F0:19:F4:9D,192.168.11.92 # tsukihi
       dhcp-host=90:48:9A:85:70:1A,192.168.11.94 # tvb928217d081b
       dhcp-host=00:0E:C6:E5:58:F4,192.168.11.98
       dhcp-host=00:22:CF:F6:C4:C9,192.168.11.96

@@ -100,7 +100,6 @@ in
       type = "ipv6_addr";
       elements = with hosts.v6; [
         umaru
-        erika
         tsukihi
       ];
     };
@@ -108,7 +107,6 @@ in
     tables.filter.sets.web-hosts = {
       type = "ipv6_addr";
       elements = with hosts.v6; [
-        erika
         umaru
         tsukihi
       ];
@@ -124,7 +122,6 @@ in
     tables.filter.sets.prometheus-hosts = {
       type = "ipv6_addr";
       elements = with hosts.v6; [
-        erika
         umaru
         tsukihi
       ];

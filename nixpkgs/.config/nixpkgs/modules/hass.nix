@@ -574,9 +574,9 @@
           };
 
           action = {
-            service = "input_boolean.toggle";
+            service = "light.toggle";
             target = {
-              entity_id = "input_boolean.switch_5_button_1";
+              entity_id = "light.bedroom";
             };
           };
         }
@@ -594,9 +594,15 @@
           };
 
           action = {
-            service = "input_boolean.toggle";
+            service_template = ''
+            {%- if (states.climate.bedroom.state == 'off') -%}
+              climate.turn_on
+            {%- else -%}
+              climate.turn_off
+            {%- endif -%}
+            '';
             target = {
-              entity_id = "input_boolean.switch_5_button_2";
+              entity_id = "climate.bedroom";
             };
           };
         }
@@ -614,9 +620,15 @@
           };
 
           action = {
-            service = "input_boolean.toggle";
+            service_template = ''
+            {%- if (states.climate.spare_room.state == 'off') -%}
+              climate.turn_on
+            {%- else -%}
+              climate.turn_off
+            {%- endif -%}
+            '';
             target = {
-              entity_id = "input_boolean.switch_5_button_3";
+              entity_id = "climate.spare_room";
             };
           };
         }
@@ -714,9 +726,15 @@
           };
 
           action = {
-            service = "input_boolean.toggle";
+            service_template = ''
+            {%- if (states.climate.study.state == 'off') -%}
+              climate.turn_on
+            {%- else -%}
+              climate.turn_off
+            {%- endif -%}
+            '';
             target = {
-              entity_id = "input_boolean.switch_7_button_2";
+              entity_id = "climate.study";
             };
           };
         }
@@ -734,9 +752,9 @@
           };
 
           action = {
-            service = "input_boolean.toggle";
+            service = "light.toggle";
             target = {
-              entity_id = "input_boolean.switch_7_button_1";
+              entity_id = "light.study";
             };
           };
         }

@@ -1,22 +1,27 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
      _1password
+      aria2
       bat
+      broot
       bundix
       choose
       colordiff
+      csvkit
       dogdns
       du-dust
-      exa
+      eza
       git
       gitAndTools.delta
       gitAndTools.gh
       fd
+      fend
       fx
       fzf
       gnumake
       gnupg
+      helix
       htop
       hyperfine
       igrep
@@ -26,30 +31,39 @@
       jless
       lego
       lsof
+      lua-language-server
       neovim
+      nil
+      nixpkgs-fmt
       nmap
       nomino
+      nurl
       overmind
       pfetch
       pigz
       procs
       ripgrep
       rsync
+      sad
       sd
       silver-searcher
       speedtest-cli
       sshpass
       stow
+      tealdeer
       tig
       tmux
       tmux-cssh
       tree
       tree-sitter
       unzip
+      wireguard-tools
+      wireguard-go
       xh
       xsv
-      youtube-dl
       yank
+      youtube-dl
+      yq
       zstd
-    ];
+      ];
 }

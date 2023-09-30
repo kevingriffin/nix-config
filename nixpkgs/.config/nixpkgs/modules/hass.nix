@@ -17,14 +17,14 @@
   services.nginx = {
     enable                   = true;
     recommendedProxySettings = true;
-    /* virtualHosts."hass.kevin.jp" = {*/
-    /*   forceSSL   = true;*/
-    /*   enableACME = true;*/
-    /*   locations."/" = {*/
-    /*     proxyPass       = "http://127.0.0.1:8123";*/
-    /*     proxyWebsockets = true;*/
-    /*   };*/
-    /* };*/
+    virtualHosts."hass.kevin.jp" = {
+      forceSSL   = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass       = "http://127.0.0.1:8123";
+        proxyWebsockets = true;
+      };
+    };
     virtualHosts."mqtt.kevin.jp" = {
       forceSSL   = true;
       enableACME = true;
@@ -175,7 +175,7 @@
             "climate.family_room"
             "climate.spare_room"
             "climate.study"
-            "light.bedroom"
+            "light.bedroom_2"
             "light.study"
             "light.living_room"
             "light.dining_room"
@@ -576,7 +576,7 @@
           action = {
             service = "light.toggle";
             target = {
-              entity_id = "light.bedroom";
+              entity_id = "light.bedroom_2";
             };
           };
         }

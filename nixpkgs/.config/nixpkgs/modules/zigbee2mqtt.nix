@@ -13,6 +13,7 @@ in
       };
       mqtt = {
         user = "zigbee";
+        server = "mqtt://127.0.0.1:1883";
         password = secrets.mosquitto-password;
       };
     };

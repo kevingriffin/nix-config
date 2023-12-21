@@ -4,7 +4,6 @@
      _1password
       aria2
       bat
-      broot
       bundix
       choose
       colordiff

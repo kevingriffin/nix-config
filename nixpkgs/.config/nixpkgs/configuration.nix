@@ -28,7 +28,7 @@ in
     pinentry
   ];
 
-  environment.variables.EDITOR = "nvim";
+  environment.variables.EDITOR = "hx";
 
   programs.ssh.startAgent = true;
 

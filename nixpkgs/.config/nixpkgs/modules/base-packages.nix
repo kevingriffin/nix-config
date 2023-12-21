@@ -32,7 +32,6 @@
       lego
       lsof
       lua-language-server
-      neovim
       nil
       nixpkgs-fmt
       nmap

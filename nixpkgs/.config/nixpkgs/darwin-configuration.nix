@@ -48,7 +48,7 @@
     (import ./overlays/packages.nix)
   ];
 
-  environment.variables.EDITOR = "nvim";
+  environment.variables.EDITOR = "hx";
   # Make gpg always request password at terminal
   environment.variables.PINENTRY_USER_DATA = "USE_CURSES=1";
 

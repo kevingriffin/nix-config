@@ -10,20 +10,22 @@ in
     resolveLocalQueries = true;
 
     servers = [
-      "2606:4700:4700::1111"
-      "2606:4700:4700::1001"
-      "1.1.1.1"
-      "1.0.0.1"
+      "8.8.8.8"
+      "8.8.4.4"
+      "2001:4860:4860::8888"
+      "2001:4860:4860::8844"
     ];
 
     extraConfig = ''
+      no-resolv
+
       bind-interfaces
       listen-address=${v6Address},${localv4Address},127.0.0.1,::1
       conf-file=${pkgs.dnsmasq}/share/dnsmasq/trust-anchors.conf
       dnssec
 
       domain=kevin.jp
-      dhcp-range=192.168.11.50,192.168.11.100,255.255.255.0,192.168.11.255,12h
+      dhcp-range=192.168.11.50,192.168.11.200,255.255.255.0,192.168.11.255,12h
       dhcp-range=::,static
 
       dhcp-host=74:4D:28:FA:46:85,192.168.11.2  # switch

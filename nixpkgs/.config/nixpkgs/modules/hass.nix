@@ -103,7 +103,7 @@
     hassPkg = withoutTests (pkgs.home-assistant.override {
       # pvoutput has the same requirements as the "sensor" integration
      extraComponents = [
-       "automation" "config" "conversation" "discovery" "frontend"
+       "automation" "config" "conversation" "frontend"
        "group" "history" "homeassistant" "homekit"
        "logbook" "map" "mqtt" "notify" "prometheus" "sun" "tasmota"
        "tts" "homekit_controller" "braviatv" "ffmpeg" "sesame" "dhcp"

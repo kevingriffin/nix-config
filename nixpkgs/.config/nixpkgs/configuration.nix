@@ -12,14 +12,14 @@ in
     (import ./local.nix { inherit config pkgs lib modulesPath unstablePkgs; })
   ];
 
-  nix.useSandbox = true;
+  nix.settings.sandbox = true;
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (import ./overlays/packages.nix)
   ];
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -59,8 +59,10 @@ in
 
   services.openssh = {
     enable                       = true;
-    passwordAuthentication       = false;
-    kbdInteractiveAuthentication = false;
+    settings = {
+      PasswordAuthentication       = false;
+      KbdInteractiveAuthentication = false;
+    };
   };
 
   networking.firewall = {

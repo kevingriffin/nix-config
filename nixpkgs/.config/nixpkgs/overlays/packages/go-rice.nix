@@ -10,7 +10,7 @@ buildGoModule rec {
     sha256 = "19lca5hcw9milgmjv6vlcg8vq4mz9a9sp5bpihxvyza0da6pklmf";
   };
 
-  vendorSha256 = "0nnvqkzbp3qxkfr8fy69viaif002r0zs0z1k02a2bvx0r9jmsnjn";
+  vendorHash = "0nnvqkzbp3qxkfr8fy69viaif002r0zs0z1k02a2bvx0r9jmsnjn";
 
   meta = with lib; {
     description = "A Go package that embeds static files into a binary";

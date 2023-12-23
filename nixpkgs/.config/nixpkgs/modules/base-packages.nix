@@ -4,6 +4,7 @@
      _1password
       aria2
       bat
+      bottom
       bundix
       choose
       colordiff
@@ -47,6 +48,7 @@
       silver-searcher
       speedtest-cli
       sshpass
+      starship
       stow
       tealdeer
       tig
@@ -62,6 +64,7 @@
       yank
       youtube-dl
       yq
+      zoxide
       zstd
       ];
 }
